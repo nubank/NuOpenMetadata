@@ -1141,6 +1141,11 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 32
+    },
+
+    "geo": {
+      "description": "Reference to geo schema that contains this table.",
+      "$ref": "../../type/entityReference.json"
     }
   },
   "required": [

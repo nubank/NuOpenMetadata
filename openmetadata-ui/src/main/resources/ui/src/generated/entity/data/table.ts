@@ -1,5 +1,5 @@
 /*
- *  Copyright 2024 Collate.
+ *  Copyright 2025 Collate.
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -10,9 +10,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-
- /**
+/**
  * A `Table` entity organizes data in rows and columns and is defined in a `Database Schema`.
  */
 export interface Table {
@@ -80,6 +78,10 @@ export interface Table {
      * Fully qualified name of a table in the form `serviceName.databaseName.tableName`.
      */
     fullyQualifiedName?: string;
+    /**
+     * Reference to geo schema that contains this table.
+     */
+    geo?: EntityReference;
     /**
      * Link to this table resource.
      */
@@ -567,6 +569,8 @@ export interface CustomMetric {
  *
  * Domain the asset belongs to. When not set, the asset inherits the domain from the parent
  * it belongs to.
+ *
+ * Reference to geo schema that contains this table.
  *
  * User, Pipeline, Query that created,updated or accessed the data asset
  *

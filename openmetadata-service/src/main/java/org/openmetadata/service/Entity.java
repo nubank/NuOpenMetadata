@@ -254,6 +254,11 @@ public final class Entity {
   static final Map<String, String> ENTITY_SERVICE_TYPE_MAP = new HashMap<>();
   public static final List<String> PARENT_ENTITY_TYPES = new ArrayList<>();
 
+  //
+  // NU
+  //
+  public static final String GEO = "geo";
+
   static {
     SERVICE_TYPE_ENTITY_MAP.put(ServiceType.DATABASE, DATABASE_SERVICE);
     SERVICE_TYPE_ENTITY_MAP.put(ServiceType.MESSAGING, MESSAGING_SERVICE);
