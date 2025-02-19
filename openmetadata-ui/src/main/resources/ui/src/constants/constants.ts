@@ -283,6 +283,11 @@ export const ROUTES = {
   // Metric Entity
   METRICS: '/metrics',
   ADD_METRIC: '/metrics/add-metric',
+
+  // Reference Data
+  REFERENCE_DATA: '/reference-data',
+  REFERENCE_DATA_GEO: '/reference-data/geo',
+  REFERENCE_DATA_DATA_OPS_TEAM: '/reference-data/data-ops-team',
 };
 
 export const SOCKET_EVENTS = {

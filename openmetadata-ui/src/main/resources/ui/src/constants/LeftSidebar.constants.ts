@@ -25,6 +25,7 @@ import { ReactComponent as SettingsIcon } from '../assets/svg/ic-settings-v1.svg
 import { ReactComponent as InsightsIcon } from '../assets/svg/lamp-charge.svg';
 import { ReactComponent as LogoutIcon } from '../assets/svg/logout.svg';
 import { ReactComponent as MetricIcon } from '../assets/svg/metric.svg';
+import { ReactComponent as ReferenceDataIcon } from '../assets/svg/reference-data.svg';
 
 import { LeftSidebarItem } from '../components/MyData/LeftSidebar/LeftSidebar.interface';
 import { SidebarItem } from '../enums/sidebar.enum';
@@ -112,6 +113,13 @@ export const SIDEBAR_LIST: Array<LeftSidebarItem> = [
         redirect_url: ROUTES.METRICS,
         icon: MetricIcon,
         dataTestId: `app-bar-item-${SidebarItem.METRICS}`,
+      },
+      {
+        key: `${ROUTES.REFERENCE_DATA}`,
+        title: i18next.t('label.reference-data'),
+        redirect_url: ROUTES.REFERENCE_DATA,
+        icon: ReferenceDataIcon,
+        dataTestId: `app-bar-item-${SidebarItem.REFERENCE_DATA}`,
       },
     ],
   },

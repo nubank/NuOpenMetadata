@@ -1,5 +1,5 @@
 /*
- *  Copyright 2024 Collate.
+ *  Copyright 2025 Collate.
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -10,21 +10,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+import i18n from '../../utils/i18next/LocalUtil';
 
-export enum SidebarItem {
-  EXPLORE = 'explore',
-  OBSERVABILITY = 'observability',
-  DATA_QUALITY = 'data-quality',
-  INCIDENT_MANAGER = 'incident-manager',
-  OBSERVABILITY_ALERT = 'observability-alert',
-  DATA_INSIGHT = 'data-insight',
-  DOMAIN = 'domain',
-  GOVERNANCE = 'governance',
-  GLOSSARY = 'glossary',
-  TAGS = 'tags',
-  INSIGHTS = 'insights',
-  SETTINGS = 'settings',
-  LOGOUT = 'logout',
-  METRICS = 'metrics',
-  REFERENCE_DATA = 'reference-data',
-}
+export const PAGE_HEADERS = {
+  REFERENCE_DATA: {
+    header: i18n.t('label.reference-data'),
+    subHeader: i18n.t('message.page-sub-header-for-reference-data'),
+  },
+};

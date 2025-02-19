@@ -267,6 +267,23 @@ const AddMetricPage = withSuspenseFallback(
   )
 );
 
+/*
+Start: Nu Routers
+*/
+
+const ReferenceDataRouter = withSuspenseFallback(
+  React.lazy(
+    () =>
+      import(
+        /* webpackChunkName: "ReferenceDataRouter" */ '../../nu/AppRouter/ReferenceDataRouter'
+      )
+  )
+);
+
+/*
+End: NU Routers
+*/
+
 const AuthenticatedAppRouter: FunctionComponent = () => {
   const { permissions } = usePermissionProvider();
 
@@ -537,6 +554,8 @@ const AuthenticatedAppRouter: FunctionComponent = () => {
         ]}>
         <Redirect to={ROUTES.MY_DATA} />
       </Route>
+
+      <Route component={ReferenceDataRouter} path="/reference-data" />
 
       <Redirect to={ROUTES.NOT_FOUND} />
     </Switch>
