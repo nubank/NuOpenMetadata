@@ -1,4 +1,4 @@
-package org.openmetadata.service.resources.nu.referencedata;
+package org.openmetadata.service.nu.resources.referencedata;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,13 +11,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
-import org.openmetadata.schema.api.nu.referencedata.CreateGeo;
-import org.openmetadata.schema.entity.nu.referencedata.Geo;
+import org.openmetadata.schema.nu.referencedata.api.CreateGeo;
+import org.openmetadata.schema.nu.referencedata.entity.Geo;
 import org.openmetadata.schema.type.Include;
 import org.openmetadata.schema.utils.EntityInterfaceUtil;
 import org.openmetadata.service.Entity;
 import org.openmetadata.service.jdbi3.ListFilter;
-import org.openmetadata.service.jdbi3.nu.referencedata.GeoRepository;
+import org.openmetadata.service.nu.jdbi3.referencedata.GeoRepository;
 import org.openmetadata.service.limits.Limits;
 import org.openmetadata.service.resources.Collection;
 import org.openmetadata.service.resources.EntityResource;
@@ -44,7 +44,6 @@ public class GeoResource extends EntityResource<Geo, GeoRepository> {
 
     public static final String COLLECTION_PATH = "/v1/geos/";
     private final GeoMapper mapper = new GeoMapper();
-    static final String FIELDS = "extension";
 
     public GeoResource(Authorizer authorizer, Limits limits) {
         super(Entity.GEO, authorizer, limits);

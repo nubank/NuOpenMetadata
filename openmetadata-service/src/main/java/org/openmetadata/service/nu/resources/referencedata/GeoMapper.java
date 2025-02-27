@@ -1,7 +1,7 @@
-package org.openmetadata.service.resources.nu.referencedata;
+package org.openmetadata.service.nu.resources.referencedata;
 
-import org.openmetadata.schema.api.nu.referencedata.CreateGeo;
-import org.openmetadata.schema.entity.nu.referencedata.Geo;
+import org.openmetadata.schema.nu.referencedata.api.CreateGeo;
+import org.openmetadata.schema.nu.referencedata.entity.Geo;
 import org.openmetadata.service.mapper.EntityMapper;
 
 public class GeoMapper implements EntityMapper<Geo, CreateGeo> {

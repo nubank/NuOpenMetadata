@@ -4,20 +4,20 @@
   "title": "Geo",
   "description": "A `Geo` is a geo location of the asset.",
   "type": "object",
-  "javaType": "org.openmetadata.schema.entity.nu.referencedata.Geo",
+  "javaType": "org.openmetadata.schema.nu.referencedata.entity.Geo",
   "javaInterfaces": ["org.openmetadata.schema.EntityInterface"],
   "properties": {
     "id": {
       "description": "Unique ID of the Geo",
-      "$ref": "../../type/basic.json#/definitions/uuid"
+      "$ref": "../../../type/basic.json#/definitions/uuid"
     },
     "name": {
       "description": "A unique name of the Geo",
-      "$ref": "../../type/basic.json#/definitions/entityName"
+      "$ref": "../../../type/basic.json#/definitions/entityName"
     },
     "fullyQualifiedName": {
       "description": "FullyQualifiedName same as `name`.",
-      "$ref": "../../type/basic.json#/definitions/fullyQualifiedEntityName"
+      "$ref": "../../../type/basic.json#/definitions/fullyQualifiedEntityName"
     },
     "displayName": {
       "description": "Name used for display purposes. Example 'Brazil', 'Colombia', etc.",
@@ -25,18 +25,18 @@
     },
     "description": {
       "description": "Description of the Geo.",
-      "$ref": "../../type/basic.json#/definitions/markdown"
+      "$ref": "../../../type/basic.json#/definitions/markdown"
     },
     "style": {
-      "$ref": "../../type/basic.json#/definitions/style"
+      "$ref": "../../../type/basic.json#/definitions/style"
     },
     "version": {
       "description": "Metadata version of the entity.",
-      "$ref": "../../type/entityHistory.json#/definitions/entityVersion"
+      "$ref": "../../../type/entityHistory.json#/definitions/entityVersion"
     },
     "updatedAt": {
       "description": "Last update time corresponding to the new version of the entity in Unix epoch time milliseconds.",
-      "$ref": "../../type/basic.json#/definitions/timestamp"
+      "$ref": "../../../type/basic.json#/definitions/timestamp"
     },
     "updatedBy": {
       "description": "User who made the update.",
@@ -44,19 +44,28 @@
     },
     "href": {
       "description": "Link to the resource corresponding to this bot.",
-      "$ref": "../../type/basic.json#/definitions/href"
+      "$ref": "../../../type/basic.json#/definitions/href"
     },
     "assets": {
       "description": "Data assets collection that is part of this domain.",
-      "$ref" : "../../type/entityReferenceList.json"
+      "$ref" : "../../../type/entityReferenceList.json"
     },
     "changeDescription": {
       "description": "Change that lead to this version of the entity.",
-      "$ref": "../../type/entityHistory.json#/definitions/changeDescription"
+      "$ref": "../../../type/entityHistory.json#/definitions/changeDescription"
     },
-    "geo": {
-      "description": "Reference to geo schema that contains this table.",
-      "$ref": "../../type/entityReference.json"
+    "deleted": {
+      "description": "When `true` indicates the entity has been soft deleted.",
+      "type": "boolean",
+      "default": false
+    },
+    "extension": {
+      "description": "Entity extension data with custom attributes added to the entity.",
+      "$ref": "../../../type/basic.json#/definitions/entityExtension"
+    },
+    "sourceUrl": {
+      "description": "Source URL of topic.",
+      "$ref": "../../../type/basic.json#/definitions/sourceUrl"
     }
   },
   "required": ["id", "name", "description"],

@@ -1,11 +1,11 @@
-package org.openmetadata.service.jdbi3.nu.referencedata;
+package org.openmetadata.service.nu.jdbi3.referencedata;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.openmetadata.schema.entity.nu.referencedata.Geo;
+import org.openmetadata.schema.nu.referencedata.entity.Geo;
 import org.openmetadata.service.Entity;
 import org.openmetadata.service.jdbi3.EntityRepository;
-import org.openmetadata.service.resources.nu.referencedata.GeoResource;
+import org.openmetadata.service.nu.resources.referencedata.GeoResource;
 import org.openmetadata.service.util.EntityUtil;
 
 @Slf4j

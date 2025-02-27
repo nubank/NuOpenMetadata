@@ -4,7 +4,7 @@
   "title": "createGeo",
   "description": "Create Geo request",
   "type": "object",
-  "javaType": "org.openmetadata.schema.api.nu.referencedata.CreateGeo",
+  "javaType": "org.openmetadata.schema.nu.referencedata.api.CreateGeo",
   "javaInterfaces": ["org.openmetadata.schema.CreateEntity"],
 
   "properties": {
@@ -22,6 +22,14 @@
     },
     "provider" : {
       "$ref": "../../../type/basic.json#/definitions/providerType"
+    },
+    "extension": {
+      "description": "Entity extension data with custom attributes added to the entity.",
+      "$ref": "../../../type/basic.json#/definitions/entityExtension"
+    },
+    "sourceUrl": {
+      "description": "Source URL of topic.",
+      "$ref": "../../../type/basic.json#/definitions/sourceUrl"
     }
   },
   "required": ["name"],

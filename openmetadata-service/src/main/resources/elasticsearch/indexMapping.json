@@ -299,5 +299,12 @@
     "alias": "ingestionPipeline",
     "parentAliases": [],
     "childAliases": []
+  },
+  "geo": {
+    "indexName": "geo_search_index",
+    "indexMappingFile": "/elasticsearch/_nu/%s/geo_index_mapping.json",
+    "alias": "geo",
+    "parentAliases": [],
+    "childAliases": []
   }
 }
