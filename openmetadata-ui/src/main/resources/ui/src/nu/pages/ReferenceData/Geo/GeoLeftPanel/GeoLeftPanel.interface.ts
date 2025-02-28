@@ -10,25 +10,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-/*
-Based on SettingsRouter.tsx
-*/
+import { Geo } from '../../../../../generated/nu/referenceData/geo';
 
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { NU_ROUTES } from '../constants/Nu.Constants';
-import ReferenceDataPage from '../pages/ReferenceData/ReferenceDataPage';
-
-const ReferenceDataRouter = () => {
-  return (
-    <Switch>
-      <Route
-        exact
-        component={ReferenceDataPage}
-        path={NU_ROUTES.REFERENCE_DATA}
-      />
-    </Switch>
-  );
-};
-
-export default ReferenceDataRouter;
+export interface GeoLeftPanelProps {
+  geos: Geo[];
+}

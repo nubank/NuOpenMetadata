@@ -10,8 +10,16 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-import { PLACEHOLDER_ROUTE_TAB } from '../../constants/constants';
-import { PLACEHOLDER_REFERENCE_DATA, ROUTES } from '../constants/Nu.Constants';
+import {
+  PLACEHOLDER_ROUTE_FQN,
+  PLACEHOLDER_ROUTE_TAB,
+  PLACEHOLDER_ROUTE_VERSION,
+} from '../../constants/constants';
+import { getEncodedFqn } from '../../utils/StringsUtils';
+import {
+  NU_ROUTES,
+  PLACEHOLDER_REFERENCE_DATA,
+} from '../constants/Nu.Constants';
 
 export const getReferenceDataPath = (
   category?: string,
@@ -19,23 +27,23 @@ export const getReferenceDataPath = (
   withFqn = false,
   withAction = false
 ) => {
-  let path = ROUTES.REFERENCE_DATA;
+  let path = NU_ROUTES.REFERENCE_DATA;
 
   if (tab && category) {
     if (withFqn) {
       path = withAction
-        ? ROUTES.REFERENCE_DATA_WITH_TAB_FQN_ACTION
-        : ROUTES.REFERENCE_DATA_WITH_TAB_FQN;
+        ? NU_ROUTES.REFERENCE_DATA_WITH_TAB_FQN_ACTION
+        : NU_ROUTES.REFERENCE_DATA_WITH_TAB_FQN;
     } else {
-      path = ROUTES.REFERENCE_DATA_WITH_TAB;
+      path = NU_ROUTES.REFERENCE_DATA_WITH_TAB;
     }
 
     path = path.replace(PLACEHOLDER_ROUTE_TAB, tab);
     path = path.replace(PLACEHOLDER_REFERENCE_DATA, category);
   } else if (category) {
     path = withFqn
-      ? ROUTES.REFERENCE_DATA_WITH_CATEGORY_FQN
-      : ROUTES.REFERENCE_DATA_WITH_CATEGORY;
+      ? NU_ROUTES.REFERENCE_DATA_WITH_CATEGORY_FQN
+      : NU_ROUTES.REFERENCE_DATA_WITH_CATEGORY;
 
     path = path.replace(PLACEHOLDER_REFERENCE_DATA, category);
   }
@@ -44,10 +52,41 @@ export const getReferenceDataPath = (
 };
 
 export const getReferenceDataCategoryPath = (referenceData: string) => {
-  let path = ROUTES.REFERENCE_DATA_WITH_TAB;
+  let path = NU_ROUTES.REFERENCE_DATA_WITH_TAB;
 
   if (referenceData) {
     path = path.replace(PLACEHOLDER_REFERENCE_DATA, referenceData);
+  }
+
+  return path;
+};
+
+export const getGeoPath = (fqn?: string) => {
+  let path = NU_ROUTES.GEO;
+  if (fqn) {
+    path = NU_ROUTES.GEO_DETAILS;
+    path = path.replace(PLACEHOLDER_ROUTE_FQN, getEncodedFqn(fqn));
+  }
+
+  return path;
+};
+
+export const getGeoVersionsPath = (domainFqn: string, version: string) => {
+  let path = NU_ROUTES.GEO_VERSION;
+  path = path
+    .replace(PLACEHOLDER_ROUTE_FQN, getEncodedFqn(domainFqn))
+    .replace(PLACEHOLDER_ROUTE_VERSION, version);
+
+  return path;
+};
+
+export const getGeoDetailsPath = (fqn: string, tab?: string) => {
+  let path = tab ? NU_ROUTES.GEO_DETAILS_WITH_TAB : NU_ROUTES.GEO_DETAILS;
+
+  path = path.replace(PLACEHOLDER_ROUTE_FQN, getEncodedFqn(fqn));
+
+  if (tab) {
+    path = path.replace(PLACEHOLDER_ROUTE_TAB, tab);
   }
 
   return path;

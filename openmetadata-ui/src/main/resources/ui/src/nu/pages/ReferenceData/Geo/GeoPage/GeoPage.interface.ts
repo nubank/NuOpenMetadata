@@ -10,25 +10,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-/*
-Based on SettingsRouter.tsx
-*/
+export enum GeoTabs {
+  DOCUMENTATION = 'documentation',
 
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { NU_ROUTES } from '../constants/Nu.Constants';
-import ReferenceDataPage from '../pages/ReferenceData/ReferenceDataPage';
+  ASSETS = 'assets',
+}
 
-const ReferenceDataRouter = () => {
-  return (
-    <Switch>
-      <Route
-        exact
-        component={ReferenceDataPage}
-        path={NU_ROUTES.REFERENCE_DATA}
-      />
-    </Switch>
-  );
-};
-
-export default ReferenceDataRouter;
+export enum GeoFormType {
+  GEO = 'GEO',
+}

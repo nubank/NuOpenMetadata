@@ -280,6 +280,13 @@ const ReferenceDataRouter = withSuspenseFallback(
   )
 );
 
+const GeoRouter = withSuspenseFallback(
+  React.lazy(
+    () =>
+      import(/* webpackChunkName: "GeoRouter" */ '../../nu/AppRouter/GeoRouter')
+  )
+);
+
 /*
 End: NU Routers
 */
@@ -539,6 +546,10 @@ const AuthenticatedAppRouter: FunctionComponent = () => {
       <Route exact component={MetricListPage} path={ROUTES.METRICS} />
       <Route exact component={AddMetricPage} path={ROUTES.ADD_METRIC} />
 
+      <Route exact component={ReferenceDataRouter} path="/reference-data" />
+
+      <Route component={GeoRouter} path="/geo" />
+
       <Route
         component={EntityRouter}
         path={`/${PLACEHOLDER_ROUTE_ENTITY_TYPE}/*`}
@@ -555,11 +566,13 @@ const AuthenticatedAppRouter: FunctionComponent = () => {
         <Redirect to={ROUTES.MY_DATA} />
       </Route>
 
-      <Route component={ReferenceDataRouter} path="/reference-data" />
-
       <Redirect to={ROUTES.NOT_FOUND} />
     </Switch>
   );
 };
 
 export default AuthenticatedAppRouter;
+
+/*
+<Route component={GeoRouter} path="/geo" />
+*/

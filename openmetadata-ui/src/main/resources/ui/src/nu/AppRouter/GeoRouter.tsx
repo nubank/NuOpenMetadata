@@ -10,25 +10,29 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-/*
-Based on SettingsRouter.tsx
-*/
-
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { NU_ROUTES } from '../constants/Nu.Constants';
-import ReferenceDataPage from '../pages/ReferenceData/ReferenceDataPage';
+import GeoPage from '../pages/ReferenceData/Geo/GeoPage/GeoPage.component';
 
-const ReferenceDataRouter = () => {
+const GeoRouter = () => {
   return (
     <Switch>
+      <Route exact component={GeoPage} path={NU_ROUTES.GEO} />
+
       <Route
         exact
-        component={ReferenceDataPage}
-        path={NU_ROUTES.REFERENCE_DATA}
+        component={GeoPage}
+        path={[NU_ROUTES.GEO_DETAILS, NU_ROUTES.GEO_DETAILS_WITH_ACTION]}
+      />
+
+      <Route
+        exact
+        component={GeoPage}
+        path={[NU_ROUTES.GEO_DETAILS_WITH_TAB, NU_ROUTES.GEO_DETAILS_WITH_TAB]}
       />
     </Switch>
   );
 };
 
-export default ReferenceDataRouter;
+export default GeoRouter;
