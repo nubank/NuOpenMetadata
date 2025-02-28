@@ -107,6 +107,7 @@ import org.openmetadata.schema.entity.domains.Domain;
 import org.openmetadata.schema.entity.events.EventSubscription;
 import org.openmetadata.schema.entity.events.FailedEvent;
 import org.openmetadata.schema.entity.events.FailedEventResponse;
+import org.openmetadata.schema.nu.referencedata.entity.Geo;
 import org.openmetadata.schema.entity.policies.Policy;
 import org.openmetadata.schema.entity.services.ApiService;
 import org.openmetadata.schema.entity.services.DashboardService;
@@ -159,6 +160,14 @@ import org.openmetadata.service.util.jdbi.BindListFQN;
 import org.openmetadata.service.util.jdbi.BindUUID;
 
 public interface CollectionDAO {
+
+  //
+  // NU
+  //
+  @CreateSqlObject
+  GeoDAO geoDAO();
+
+
   @CreateSqlObject
   DatabaseDAO databaseDAO();
 
@@ -646,6 +655,29 @@ public interface CollectionDAO {
         @BindMap Map<String, ?> params,
         @Define("sqlCondition") String mysqlCond);
   }
+
+  //
+  // NU
+  //
+  interface GeoDAO extends EntityDAO<Geo> {
+    @Override
+    default String getTableName() {
+      return "geo_entity";
+    }
+
+    @Override
+    default Class<Geo> getEntityClass() {
+      return Geo.class;
+    }
+
+    @Override
+    default String getNameHashColumn() {
+      return "fqnHash";
+    }
+  }
+  //
+  // NU
+  //
 
   interface SearchServiceDAO extends EntityDAO<SearchService> {
     @Override

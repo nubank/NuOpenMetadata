@@ -62,6 +62,7 @@ import { EntityHistory } from '../../generated/type/entityHistory';
 import { Include } from '../../generated/type/include';
 import { TagLabel } from '../../generated/type/tagLabel';
 import { useFqn } from '../../hooks/useFqn';
+import { getGeoByNuRN, getGeoVersionsList } from '../../nu/rest/geoAPI';
 import {
   getApiEndPointByFQN,
   getApiEndPointVersion,
@@ -368,6 +369,21 @@ const EntityVersionPage: FunctionComponent = () => {
           setEntityId(id ?? '');
 
           const versions = await getMetricVersions(id ?? '');
+
+          setVersionList(versions);
+
+          break;
+        }
+
+        // NU
+        case EntityType.GEO: {
+          const { id } = await getGeoByNuRN(decodedEntityFQN, {
+            include: Include.All,
+          });
+
+          setEntityId(id ?? '');
+
+          const versions = await getGeoVersionsList(id ?? '');
 
           setVersionList(versions);
 

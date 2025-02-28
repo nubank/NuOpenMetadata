@@ -267,6 +267,30 @@ const AddMetricPage = withSuspenseFallback(
   )
 );
 
+/*
+Start: Nu Routers
+*/
+
+const ReferenceDataRouter = withSuspenseFallback(
+  React.lazy(
+    () =>
+      import(
+        /* webpackChunkName: "ReferenceDataRouter" */ '../../nu/AppRouter/ReferenceDataRouter'
+      )
+  )
+);
+
+const GeoRouter = withSuspenseFallback(
+  React.lazy(
+    () =>
+      import(/* webpackChunkName: "GeoRouter" */ '../../nu/AppRouter/GeoRouter')
+  )
+);
+
+/*
+End: NU Routers
+*/
+
 const AuthenticatedAppRouter: FunctionComponent = () => {
   const { permissions } = usePermissionProvider();
 
@@ -522,6 +546,10 @@ const AuthenticatedAppRouter: FunctionComponent = () => {
       <Route exact component={MetricListPage} path={ROUTES.METRICS} />
       <Route exact component={AddMetricPage} path={ROUTES.ADD_METRIC} />
 
+      <Route exact component={ReferenceDataRouter} path="/reference-data" />
+
+      <Route component={GeoRouter} path="/geo" />
+
       <Route
         component={EntityRouter}
         path={`/${PLACEHOLDER_ROUTE_ENTITY_TYPE}/*`}
@@ -544,3 +572,7 @@ const AuthenticatedAppRouter: FunctionComponent = () => {
 };
 
 export default AuthenticatedAppRouter;
+
+/*
+<Route component={GeoRouter} path="/geo" />
+*/

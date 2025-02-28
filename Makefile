@@ -28,6 +28,10 @@ yarn_install_cache:  ## Use Yarn to install UI dependencies
 yarn_start_dev_ui:  ## Run the UI locally with Yarn
 	cd openmetadata-ui/src/main/resources/ui && yarn start
 
+.PHONY: yarn_build_ui
+yarn_build_ui:  ## Run the UI locally with Yarn
+	cd openmetadata-ui/src/main/resources/ui && yarn build
+
 .PHONY: yarn_start_e2e
 yarn_start_e2e:  ## Run the e2e tests locally with Yarn
 	cd openmetadata-ui/src/main/resources/ui && yarn playwright:run

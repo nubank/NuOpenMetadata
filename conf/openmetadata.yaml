@@ -159,7 +159,7 @@ database:
 migrationConfiguration:
   flywayPath: "./bootstrap/sql/migrations/flyway"
   nativePath: "./bootstrap/sql/migrations/native"
-  extensionPath: ""
+  extensionPath: "./bootstrap/sql/migrations/extension"
 
 # Authorizer Configuration
 authorizerConfiguration:
