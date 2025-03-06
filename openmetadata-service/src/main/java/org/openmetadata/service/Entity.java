@@ -258,6 +258,7 @@ public final class Entity {
   // NU
   //
   public static final String GEO = "geo";
+  public static final String TRIGGER = "trigger";
 
   static {
     SERVICE_TYPE_ENTITY_MAP.put(ServiceType.DATABASE, DATABASE_SERVICE);

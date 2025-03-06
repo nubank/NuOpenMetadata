@@ -108,6 +108,7 @@ import org.openmetadata.schema.entity.events.EventSubscription;
 import org.openmetadata.schema.entity.events.FailedEvent;
 import org.openmetadata.schema.entity.events.FailedEventResponse;
 import org.openmetadata.schema.nu.referencedata.entity.Geo;
+import org.openmetadata.schema.nu.multirepos.entity.Trigger;
 import org.openmetadata.schema.entity.policies.Policy;
 import org.openmetadata.schema.entity.services.ApiService;
 import org.openmetadata.schema.entity.services.DashboardService;
@@ -167,6 +168,8 @@ public interface CollectionDAO {
   @CreateSqlObject
   GeoDAO geoDAO();
 
+  @CreateSqlObject
+  TriggerDAO triggerDAO();
 
   @CreateSqlObject
   DatabaseDAO databaseDAO();
@@ -668,6 +671,23 @@ public interface CollectionDAO {
     @Override
     default Class<Geo> getEntityClass() {
       return Geo.class;
+    }
+
+    @Override
+    default String getNameHashColumn() {
+      return "fqnHash";
+    }
+  }
+
+  interface TriggerDAO extends EntityDAO<Trigger> {
+    @Override
+    default String getTableName() {
+      return "trigger_entity";
+    }
+
+    @Override
+    default Class<Trigger> getEntityClass() {
+      return Trigger.class;
     }
 
     @Override
