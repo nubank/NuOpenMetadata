@@ -28,7 +28,8 @@ public class TableMapper implements EntityMapper<Table, CreateTable> {
                     getEntityReference(Entity.DATABASE_SCHEMA, create.getDatabaseSchema())))
         .withDatabaseSchema(getEntityReference(Entity.DATABASE_SCHEMA, create.getDatabaseSchema()))
         .withRetentionPeriod(create.getRetentionPeriod())
-        .withSourceHash(create.getSourceHash());
+        .withSourceHash(create.getSourceHash())
+            .withGeo(getEntityReference(Entity.GEO, create.getGeo()));
   }
 
   public CustomMetric createCustomMetricToEntity(CreateCustomMetric create, String user) {

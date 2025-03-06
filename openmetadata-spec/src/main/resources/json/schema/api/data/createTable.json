@@ -110,6 +110,12 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 32
+    },
+
+
+    "geo": {
+      "description": "FullyQualified name of the Geo corresponding to this table",
+      "$ref": "../../type/basic.json#/definitions/fullyQualifiedEntityName"
     }
   },
   "required": ["name", "columns", "databaseSchema"],

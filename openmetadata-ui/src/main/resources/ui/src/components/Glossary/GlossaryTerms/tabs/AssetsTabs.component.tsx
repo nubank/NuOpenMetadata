@@ -215,6 +215,9 @@ const AssetsTabs = forwardRef(
         case AssetsOfEntity.FOLLOWING:
           return queryFilter ?? '';
 
+        case AssetsOfEntity.GEO:
+          return `(geo.fullyQualifiedName:"${encodedFqn}")`;
+
         default:
           return getTagAssetsQueryFilter(encodedFqn);
       }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2024 Collate.
+ *  Copyright 2025 Collate.
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -10,9 +10,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-
- /**
+/**
  * Schema corresponding to a table that belongs to a database
  */
 export interface CreateTable {
@@ -49,6 +47,10 @@ export interface CreateTable {
      * File format in case of file/datalake tables.
      */
     fileFormat?: FileFormat;
+    /**
+     * FullyQualified name of the Geo corresponding to this table
+     */
+    geo?: string;
     /**
      * Life Cycle of the entity
      */

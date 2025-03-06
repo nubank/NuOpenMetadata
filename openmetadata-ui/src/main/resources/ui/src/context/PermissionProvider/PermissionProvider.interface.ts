@@ -83,6 +83,8 @@ export enum ResourceEntity {
   API_SERVICE = 'apiService',
   API_COLLECTION = 'apiCollection',
   API_ENDPOINT = 'apiEndpoint',
+
+  GEO = 'geo', // NU
 }
 
 export interface PermissionContextType {
