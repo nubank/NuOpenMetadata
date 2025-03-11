@@ -302,8 +302,15 @@
   },
   "geo": {
     "indexName": "geo_search_index",
-    "indexMappingFile": "/elasticsearch/_nu/%s/geo_index_mapping.json",
+    "indexMappingFile": "/elasticsearch/_nu/%s/geo_collection_index_mapping.json",
     "alias": "geo",
+    "parentAliases": [],
+    "childAliases": []
+  },
+  "trigger": {
+    "indexName": "trigger_search_index",
+    "indexMappingFile": "/elasticsearch/_nu/%s/trigger_index_mapping.json",
+    "alias": "trigger",
     "parentAliases": [],
     "childAliases": []
   }

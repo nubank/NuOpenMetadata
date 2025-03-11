@@ -29,12 +29,14 @@ import org.openmetadata.schema.entity.services.ingestionPipelines.IngestionPipel
 import org.openmetadata.schema.entity.teams.Team;
 import org.openmetadata.schema.entity.teams.User;
 import org.openmetadata.schema.nu.referencedata.entity.Geo;
+import org.openmetadata.schema.nu.multirepos.entity.Trigger;
 import org.openmetadata.schema.tests.TestCase;
 import org.openmetadata.schema.tests.TestSuite;
 import org.openmetadata.schema.tests.type.TestCaseResolutionStatus;
 import org.openmetadata.schema.tests.type.TestCaseResult;
 import org.openmetadata.service.Entity;
 import org.openmetadata.service.nu.search.indexes.referencedata.GeoIndex;
+import org.openmetadata.service.nu.search.indexes.multirepos.TriggerIndex;
 import org.openmetadata.service.search.indexes.APICollectionIndex;
 import org.openmetadata.service.search.indexes.APIEndpointIndex;
 import org.openmetadata.service.search.indexes.APIServiceIndex;
@@ -136,6 +138,7 @@ public class SearchIndexFactory {
           (TestCaseResolutionStatus) entity);
       case Entity.TEST_CASE_RESULT -> new TestCaseResultIndex((TestCaseResult) entity);
       case Entity.GEO -> new GeoIndex((Geo) entity);
+      case Entity.TRIGGER -> new TriggerIndex((Trigger) entity);
       default -> buildExternalIndexes(entityType, entity);
     };
   }
