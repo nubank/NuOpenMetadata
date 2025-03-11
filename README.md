@@ -16,8 +16,9 @@
 Contents:
 
 - [Create entity](#create-entity)
+- [Enable search](#enable-search)
 ---
-## Create entity:
+# Create entity:
 
 Follow these steps to create and integrate a new entity into **OpenMetadata**.
 
@@ -37,12 +38,12 @@ Ensure that in `conf/openmetadata.yaml`, under the `migrationConfiguration` sect
 ### **Entity Spec (JSON Schema)**
 Create the **JSON Schema** for the entity at:
 ```
-openmetadata-spec/src/main/resources/json/schema/nu/<initiative>/yourEntity.json
+openmetadata-spec/src/main/resources/json/schema/nu/<initiative>/entity/yourEntity.json
 ```
 ### **API Spec**
 Create the **JSON Schema** for the API at:
 ```
-openmetadata-spec/src/main/resources/json/schema/api/nu/<initiative>/createYourEntity.json
+openmetadata-spec/src/main/resources/json/schema/api/nu/<initiative>/api/createYourEntity.json
 ```
 
 📌 **Note:**
@@ -79,7 +80,7 @@ The **repository** extends the `EntityRepository` class for communication with t
 **Purpose:** Handles direct interaction with the database.
 ### **Location:**
   ```
-  openmetadata-service/src/main/java/org/openmetadata/service/jdbi3/nu/<initiative>/YourEntityRepository.java
+  openmetadata-service/src/main/java/org/openmetadata/service/nu/jdbi3/<initiative>/YourEntityRepository.java
   ```
 
 ### **Example:**
@@ -109,7 +110,7 @@ The **mapper** converts the `create<Entity>` request into the entity object.
 **Purpose:** Handles direct interaction with the database.
 ### **Location:**
   ```
-  openmetadata-service/src/main/java/org/openmetadata/service/resources/nu/<initiative>/YourEntityMapper.java
+  openmetadata-service/src/main/java/org/openmetadata/service/nu/resources/<initiative>/YourEntityMapper.java
   ```
 ### **Example:**
   ```java
@@ -136,7 +137,7 @@ The **resource** manages **CRUD** operations following REST standards.
 
 ### **Location:**
   ```
-  openmetadata-service/src/main/java/org/openmetadata/service/resources/nu/<initiative>/YourEntityResource.java
+  openmetadata-service/src/main/java/org/openmetadata/service/nu/resources/<initiative>/YourEntityResource.java
   ```
 
 ### **Example:**
@@ -189,10 +190,61 @@ public class YourEntityResource extends EntityResource<YourEntity, YourEntityRep
 
 ---
 
-## ✅ **Best Practices**
+### ✅ **Best Practices**
 - Use **camelCase** for JSON files and **PascalCase** for Java classes.
 - Keep the folder structure consistent across initiatives.
 - Refer to existing entities when in doubt.
+
+---
+___
+
+# Enable search:
+
+## **Step 1: Creating index mapping**
+First, you need to create the json of the index file in:
+```
+openmetadata-service/src/main/resources/elasticsearch/_nu/en/<your_entity>_index_mapping.json
+```
+## **Step 2: New entry for the mapping**
+In order for elasticsearch recognizes the schema, you need to declare it in:
+```
+openmetadata-service/src/main/resources/elasticsearch/
+```
+### Example:
+```java
+  "yourEntity": {
+    "indexName": "yourEntity_search_index",
+    "indexMappingFile": "/elasticsearch/_nu/%s/yourEntity_mapping.json",
+    "alias": "yourEntity",
+    "parentAliases": [],
+    "childAliases": []
+  }
+```
+## **Step 3: Creating index java class**
+You can create the java class in:
+```
+openmetadata-service/src/main/java/org/openmetadata/service/nu/search/indexes/<initiative>/<your_Entity>Index.java
+```
+This class must implements **SearchIndex** and contains the **List**, **Object** and **Map** methods.
+
+## **Step 4: Include new class in the search index factory**
+Declare the entity in the search index factory in order to build the search index.
+```
+openmetadata-service/src/main/java/org/openmetadata/service/search/SearchIndexFactory.java
+```
+
+### Example
+```java
+import org.openmetadata.service.nu.search.indexes.<initiative>.YourEntityIndex;
+import org.openmetadata.schema.nu.<initiative>.entity.YourEntity;
+    (...)  
+    case Entity.YOURENTITY -> new EntityIndex((yourEntity) entity);
+    (...)
+```
+## **Step 5: Refactoring the project**
+It is necessary to refactor the project to replicate the parent project structure in a `nu` folder.
+
+To do so, please follow: [OpenMetadata Server Build Guide](https://docs.open-metadata.org/v1.5.x/developers/contribute/build-code-and-run-tests/openmetadata-server)
 
 ---
 ___
